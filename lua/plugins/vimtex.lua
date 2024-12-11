@@ -18,7 +18,7 @@ return {
     vim.g.vimtex_compiler_latexmk = {
         ['out_dir'] =  'build',
         ['aux_dir'] = 'build',
-        ['continuous'] = '0',
+        ['continuous'] = '1',
         options = {
           "-shell-escape",
           "-verbose",
@@ -28,7 +28,7 @@ return {
         }
       }
 
-      vim.keymap.set({ "n" }, "<F5>", "<plug>(vimtex-compile-ss)", { silent = true })
+      vim.keymap.set({ "n" }, "<F5>", "<plug>(vimtex-toggle-main) | <plug>(vimtex-compile-ss)", { silent = true })
       vim.keymap.set({ "n" }, "<F6>", "<plug>(vimtex-view)", { silent = true })
   end
 }

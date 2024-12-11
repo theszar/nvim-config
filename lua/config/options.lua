@@ -57,3 +57,4 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+opt.clipboard = "unnamedplus"

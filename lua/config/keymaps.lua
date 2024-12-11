@@ -88,3 +88,6 @@ map('n', '<leader>cq', ':cexpr [] | cclose<CR>', { noremap = true, silent = true
 
 -- Clear LSP diagnostics
 vim.api.nvim_set_keymap('n', '<leader>cd', ':lua vim.diagnostic.reset(nil, 0)<CR>', { noremap = true, silent = true })
+
+
+map('n', '<leader>sc', ':source %<CR>', { noremap = true, silent = true })

@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
+    tag = '0.1.8',
     dependencies = {
       {'nvim-lua/plenary.nvim'},
       {'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
@@ -48,6 +48,13 @@ return {
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {desc = "Fuzzy find recent files"})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find buffers"})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Find help tags"})
+      vim.keymap.set('n', '<leader>fo',
+          function()
+            builtin.find_files {
+              desc = "Find config files",
+              cwd = vim.fn.stdpath("config")
+            }
+          end)
       require('telescope').load_extension('fzf')
   end,
 }
