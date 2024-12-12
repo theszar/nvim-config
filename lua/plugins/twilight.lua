@@ -1,3 +1,4 @@
+--Plugin Application:  dims inactive portions of the code you're editing - nice with zen-mode
 return
 {
   "folke/twilight.nvim",

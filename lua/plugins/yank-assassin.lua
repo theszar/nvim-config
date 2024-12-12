@@ -1,3 +1,4 @@
+--Plugin Application: while Yanking your cursor will not move to the start of the Yanked Text.
 return {
     "svban/YankAssassin.nvim",
     config = function()

@@ -1,3 +1,4 @@
+--Plugin Application: stay focused of writing 
 return {
   "folke/zen-mode.nvim",
   opts = {

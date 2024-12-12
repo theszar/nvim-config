@@ -1,10 +1,10 @@
+--Plugin Application: highlight and search for todo comments like TODO, HACK, BUG in your code base
 return
 {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
   local todo = require('todo-comments')
-
   todo.setup({
     signs = true, -- show icons in the signs column
     sign_priority = 8, -- sign priority
