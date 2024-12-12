@@ -17,9 +17,14 @@ return {
     vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#3FC5FF ]])
     -- configure nvim-tree
     nvimtree.setup({
+      sync_root_with_cwd = true,
       view = {
         width = 40,
         relativenumber = true,
+      },
+      update_focused_file = {
+        enable = true,
+        update_cwd = true,
       },
       -- change folder arrow icons
       renderer = {

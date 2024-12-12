@@ -47,12 +47,12 @@ map("n", "<localleader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<localleader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Move Lines
-map("n", "<S-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<S-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("n", "<S-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("n", "<S-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 -- map("i", "<S-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 -- map("i", "<S-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<S-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<S-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("v", "<S-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("v", "<S-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -68,6 +68,7 @@ map("n", "<localleader>r", ":set rnu!<CR>", {silent=true})
 
 
 -- Toggle quickfix window
+
 function ToggleQuickfix()
   local quickfix_open = false
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -90,4 +91,11 @@ map('n', '<leader>cq', ':cexpr [] | cclose<CR>', { noremap = true, silent = true
 vim.api.nvim_set_keymap('n', '<leader>cd', ':lua vim.diagnostic.reset(nil, 0)<CR>', { noremap = true, silent = true })
 
 
-map('n', '<leader>sc', ':source %<CR>', { noremap = true, silent = true })
+
+-- changing local working directory
+map('n', '<leader>lcd', ':lcd %:p:h<CR>:lcd<CR>', { noremap = true, silent = true })
+map('n', '<leader>cd', ':cd %:p:h<CR>:cd<CR>', { noremap = true, silent = true })
+
+
+
+map('n', '<leader>so', ':source %<CR>', { noremap = true, silent = true })

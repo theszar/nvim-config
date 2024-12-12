@@ -7,20 +7,27 @@ return {
     },
     config = function()
       local ts = require('telescope')
+      local actions = require('telescope.actions')
       ts.setup{
-        defaults = {
-          -- Default configuration for telescope goes here:
-          -- config_key = value,
-          mappings = {
+        defaults = require("telescope.themes").get_ivy{
+          prompt_prefix = "🔍 ",
+          selection_caret = "➜ ",
+          layout_config = {
+            height = 0.4,
+          },
+        mappings = {
             i = {
               -- map actions.which_key to <C-h> (default: <C-/>)
               -- actions.which_key shows the mappings for your picker,
               -- e.g. git_{create, delete, ...}_branch for the git_branches picker
               -- ["<C-h>"] = "which_key"
+              ["<esc>"] = actions.close,
             }
           }
-        },
+          },
         pickers = {
+          find_files = {
+            -- theme = "ivy",
           -- Default configuration for builtin pickers goes here:
           -- picker_name = {
           --   picker_config_key = value,
@@ -39,16 +46,18 @@ return {
               }
         }
       }
+    }
 
 
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Fuzzy find files in cwd"})
       vim.keymap.set('n', '<leader>fs', builtin.live_grep, {desc = "Find string in cwd"})
-      vim.keymap.set('n', '<leader>fc', builtin.grep_string, {desc = "Find string under cursor in cwd"})
+      vim.keymap.set('n', '<leader>fw', builtin.grep_string, {desc = "Find word under cursor in cwd"})
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {desc = "Fuzzy find recent files"})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find buffers"})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Find help tags"})
-      vim.keymap.set('n', '<leader>fo',
+      vim.keymap.set('n', '<leader>fo', builtin.vim_options, {desc = "Find vim options"})
+      vim.keymap.set('n', '<leader>fc',
           function()
             builtin.find_files {
               desc = "Find config files",
