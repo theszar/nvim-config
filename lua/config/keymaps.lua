@@ -69,24 +69,23 @@ map("n", "<localleader>r", ":set rnu!<CR>", {silent=true})
 
 -- Toggle quickfix window
 
-function ToggleQuickfix()
-  local quickfix_open = false
-  for _, win in pairs(vim.fn.getwininfo()) do
-    if win.quickfix == 1 then
-      quickfix_open = true
-    end
-  end
-
-  if quickfix_open then
-    vim.cmd('cclose')
-  else
-    vim.cmd('copen')
-  end
-end
-map('n', '<leader>q', ':lua ToggleQuickfix()<CR>', { noremap = true, silent = true })
---clear quick fix window
-map('n', '<leader>cq', ':cexpr [] | cclose<CR>', { noremap = true, silent = true })
-
+-- function ToggleQuickfix()
+--   local quickfix_open = false
+--   for _, win in pairs(vim.fn.getwininfo()) do
+--     if win.quickfix == 1 then
+--       quickfix_open = true
+--     end
+--   end
+--
+--   if quickfix_open then
+--     vim.cmd('cclose')
+--   else
+--     vim.cmd('copen 30')
+--   end
+-- end
+-- map('n', '<leader>q', ':lua ToggleQuickfix()<CR>', { noremap = true, silent = true })
+-- --clear quick fix window
+-- map('n', '<leader>cq', ':cexpr [] | cclose<CR>', { noremap = true, silent = true })
 -- Clear LSP diagnostics
 vim.api.nvim_set_keymap('n', '<leader>cd', ':lua vim.diagnostic.reset(nil, 0)<CR>', { noremap = true, silent = true })
 
